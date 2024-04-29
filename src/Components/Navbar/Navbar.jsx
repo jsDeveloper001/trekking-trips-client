@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FirebaseAuth } from "../../Services/AuthProvider";
 import Swal from "sweetalert2";
+import { Tooltip } from 'react-tooltip'
 
 const Navbar = () => {
     const [theme, setTheme] = useState('light')
@@ -23,7 +24,7 @@ const Navbar = () => {
                     toast: true,
                     position: "top-end",
                     showConfirmButton: false,
-                    timer: 1000,
+                    timer: 2000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.stopTimer;
@@ -72,7 +73,7 @@ const Navbar = () => {
                         User ?
                             <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-10 rounded-full" title="User Name">
+                                    <div className="w-10 rounded-full" data-tooltip-id="userName" data-tooltip-content={User.displayName} data-tooltip-place="bottom-start">
                                         <img alt="User Image" src={User.photoURL} />
                                     </div>
                                 </div>
@@ -91,6 +92,7 @@ const Navbar = () => {
                     }
                 </div>
             </div>
+            <Tooltip id="userName" />
         </nav >
     );
 };

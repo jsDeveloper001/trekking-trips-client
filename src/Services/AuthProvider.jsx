@@ -8,7 +8,7 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
     const [update, setUpdate] = useState(true)
 
-    const reUpdate = () =>{
+    const reUpdate = () => {
         setUpdate(!update)
     }
 
