@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FirebaseAuth } from "../../Services/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
     const [theme, setTheme] = useState('light')
+    const { User, loading, Logout } = useContext(FirebaseAuth)
+    console.log(User)
     const HandleTheme = (e) => {
         if (e.target.checked) {
             setTheme('dark')
@@ -12,6 +16,28 @@ const Navbar = () => {
             setTheme('light')
         }
     }
+
+    const SignOut = () => {
+        Logout()
+            .then(() => {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "Signed out successfully"
+                });
+            })
+    }
+
     useEffect(() => {
         document.querySelector('html').setAttribute('data-theme', theme)
     }, [theme])
@@ -43,8 +69,27 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     <input type="checkbox" className="toggle toggle-accent toggle-sm sm:toggle-md mr-1 sm:mr-3" onChange={HandleTheme} id="themeButton" />
-                    <Link className="btn btn-sm sm:btn-md  mr-1 sm:mr-3 bg-blue-600 text-white hover:bg-blue-700 duration-500" to={'/login'}>Login</Link>
-                    <Link className="btn btn-sm sm:btn-md bg-amber-600 text-white hover:bg-amber-700 duration-500" to={'/register'}>Register</Link>
+                    {
+                        User ?
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full" title="User Name">
+                                        <img alt="Tailwind CSS Navbar component" src={User.photoURL} />
+                                    </div>
+                                </div>
+                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                    <li><a className="btn bg-red-600 text-white hover:bg-red-700" onClick={SignOut}>Logout</a></li>
+                                </ul>
+                            </div>
+                            :
+                            loading ?
+                                <span className="loading loading-spinner loading-lg  text-warning"></span>
+                                :
+                                <div>
+                                    <Link className="btn btn-sm sm:btn-md  mr-1 sm:mr-3 bg-blue-600 text-white hover:bg-blue-700 duration-500" to={'/login'}>Login</Link>
+                                    <Link className="btn btn-sm sm:btn-md bg-amber-600 text-white hover:bg-amber-700 duration-500" to={'/register'}>Register</Link>
+                                </div>
+                    }
                 </div>
             </div>
         </nav >

@@ -1,10 +1,118 @@
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FirebaseAuth } from "../../Services/AuthProvider";
+import { useContext } from "react";
+import Swal from "sweetalert2";
+
 
 const Login = () => {
+    const { GoogleSignIn, GithubSignIn, Login, User } = useContext(FirebaseAuth)
     const HandleLogin = (e) => {
+        e.preventDefault()
+        const email = e.target.email.value;
+        const password = e.target.password.value;
 
+        if (User) {
+            alert("already user Logged In")
+        }
+        else {
+            Login(email, password)
+                .then((user) => {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 1000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "success",
+                        title: "Signed in successfully"
+                    });
+                    e.target.reset()
+                })
+                .catch((error) => {
+                    console.log(error)
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 1000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "question",
+                        title: "Invalid Email/Password"
+                    });
+                    e.target.reset()
+                })
+        }
     }
+
+    // Google Sign in
+    const SignInWithGoogle = () => {
+        if (User) {
+            alert("User existed")
+        }
+        else {
+            GoogleSignIn()
+                .then(() => {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 1000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "success",
+                        title: "Signed in successfully"
+                    });
+                })
+                .catch(error => console.log(error))
+        }
+    }
+
+    // Github Sign In
+    const SignInWithGithub = () => {
+        if (User) {
+            alert()
+        }
+        else {
+            GithubSignIn()
+                .then(() => {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "success",
+                        title: "Signed in successfully"
+                    });
+                })
+                .catch(error => console.log(error))
+        }
+    }
+
     return (
         <div className='flex justify-center mt-10 h-auto px-5'>
             <div className='p-7 rounded-md border-2 border-blue-600 w-full sm:max-w-xl'>
@@ -19,10 +127,10 @@ const Login = () => {
                     </form>
                     {/* social login */}
                     <div className='my-5 flex gap-2 items-center justify-center'>
-                        <div className='bg-gray-100 btn w-1/2'>
+                        <div className='bg-gray-100 btn w-1/2' onClick={SignInWithGoogle}>
                             <FaGoogle className='text-3xl text-green-600' />
                         </div>
-                        <div className='bg-gray-100 btn w-1/2'>
+                        <div className='bg-gray-100 btn w-1/2' onClick={SignInWithGithub}>
                             <FaGithub className='text-3xl text-violet-600' />
                         </div>
                     </div>
