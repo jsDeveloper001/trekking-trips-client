@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FirebaseAuth } from "../../Services/AuthProvider";
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -10,6 +10,8 @@ const Register = () => {
     const { Register, User, reUpdate } = useContext(FirebaseAuth)
     const [showPass, setShowPass] = useState(false)
     const [error, setError] = useState(false)
+    const navigate = useNavigate()
+
     const HandleRegister = (e) => {
         e.preventDefault()
         const name = e.target.name.value
@@ -69,6 +71,7 @@ const Register = () => {
                                 icon: "success",
                                 title: "Register and Signed in successfully"
                             });
+                            navigate('/')
                             reUpdate()
                             e.target.reset()
                         })

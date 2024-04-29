@@ -8,6 +8,7 @@ import { Tooltip } from 'react-tooltip'
 const Navbar = () => {
     const [theme, setTheme] = useState('light')
     const { User, loading, Logout } = useContext(FirebaseAuth)
+
     const HandleTheme = (e) => {
         if (e.target.checked) {
             setTheme('dark')
@@ -52,9 +53,9 @@ const Navbar = () => {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to={'/'}>Home</Link></li>
-                            <li><Link to={'/'}>All Tourists Spot</Link></li>
-                            <li><Link to={'/'}>Add Tourists Spot</Link></li>
-                            <li><Link to={'/'}>My List</Link></li>
+                            <li><Link to={'/all-tourists-spot'}>All Tourists Spot</Link></li>
+                            <li><Link to={'/add-new-tourists-spot'}>Add Tourists Spot</Link></li>
+                            <li><Link to={'/my-list'}>My List</Link></li>
                         </ul>
                     </div>
                     <Link className="btn btn-ghost text-[15px] font-bold md:text-xl" to={'/'}>Trekking Trips</Link>
@@ -62,9 +63,9 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to={'/'}>Home</Link></li>
-                        <li><Link to={'/'}>All Tourists Spot</Link></li>
-                        <li><Link to={'/'}>Add Tourists Spot</Link></li>
-                        <li><Link to={'/'}>My List</Link></li>
+                        <li><Link to={'/all-tourists-spot'}>All Tourists Spot</Link></li>
+                        <li><Link to={'/add-new-tourists-spot'}>Add Tourists Spot</Link></li>
+                        <li><Link to={'/my-list'}>My List</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">

@@ -1,12 +1,15 @@
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FirebaseAuth } from "../../Services/AuthProvider";
 import { useContext } from "react";
 import Swal from "sweetalert2";
 
 
 const Login = () => {
-    const { GoogleSignIn, GithubSignIn, Login, User } = useContext(FirebaseAuth)
+    const { GoogleSignIn, GithubSignIn, Login, User, reUpdate } = useContext(FirebaseAuth)
+    const location = useLocation()
+    const navigate = useNavigate()
+
     const HandleLogin = (e) => {
         e.preventDefault()
         const email = e.target.email.value;
@@ -32,6 +35,7 @@ const Login = () => {
         else {
             Login(email, password)
                 .then((user) => {
+                    reUpdate()
                     const Toast = Swal.mixin({
                         toast: true,
                         position: "top-end",
@@ -47,6 +51,7 @@ const Login = () => {
                         icon: "success",
                         title: "Signed in successfully"
                     });
+                    navigate(location?.state ? location.state : '/')
                     e.target.reset()
                 })
                 .catch((error) => {
@@ -93,6 +98,7 @@ const Login = () => {
         else {
             GoogleSignIn()
                 .then(() => {
+                    reUpdate()
                     const Toast = Swal.mixin({
                         toast: true,
                         position: "top-end",
@@ -108,6 +114,7 @@ const Login = () => {
                         icon: "success",
                         title: "Signed in successfully"
                     });
+                    navigate(location?.state ? location.state : '/')
                 })
                 .catch(error => console.log(error))
         }
@@ -135,6 +142,7 @@ const Login = () => {
         else {
             GithubSignIn()
                 .then(() => {
+                    reUpdate()
                     const Toast = Swal.mixin({
                         toast: true,
                         position: "top-end",
@@ -150,6 +158,7 @@ const Login = () => {
                         icon: "success",
                         title: "Signed in successfully"
                     });
+                    navigate(location?.state ? location.state : '/')
                 })
                 .catch(error => console.log(error))
         }
