@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 const Navbar = () => {
     const [theme, setTheme] = useState('light')
     const { User, loading, Logout } = useContext(FirebaseAuth)
-    console.log(User)
     const HandleTheme = (e) => {
         if (e.target.checked) {
             setTheme('dark')
@@ -74,7 +73,7 @@ const Navbar = () => {
                             <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full" title="User Name">
-                                        <img alt="Tailwind CSS Navbar component" src={User.photoURL} />
+                                        <img alt="User Image" src={User.photoURL} />
                                     </div>
                                 </div>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">

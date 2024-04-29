@@ -13,7 +13,21 @@ const Login = () => {
         const password = e.target.password.value;
 
         if (User) {
-            alert("already user Logged In")
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "question",
+                title: "User Already Signed In"
+            });
         }
         else {
             Login(email, password)
@@ -60,7 +74,21 @@ const Login = () => {
     // Google Sign in
     const SignInWithGoogle = () => {
         if (User) {
-            alert("User existed")
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "question",
+                title: "User Already Signed In"
+            });
         }
         else {
             GoogleSignIn()
@@ -88,7 +116,21 @@ const Login = () => {
     // Github Sign In
     const SignInWithGithub = () => {
         if (User) {
-            alert()
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "question",
+                title: "User Already Signed In"
+            });
         }
         else {
             GithubSignIn()
