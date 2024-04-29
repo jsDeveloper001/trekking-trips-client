@@ -42,7 +42,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <input type="checkbox" className="toggle toggle-sm sm:toggle-md mr-1 sm:mr-3" onChange={HandleTheme} id="themeButton" />
+                    <input type="checkbox" className="toggle toggle-accent toggle-sm sm:toggle-md mr-1 sm:mr-3" onChange={HandleTheme} id="themeButton" />
                     <Link className="btn btn-sm sm:btn-md  mr-1 sm:mr-3 bg-blue-600 text-white hover:bg-blue-700 duration-500" to={'/login'}>Login</Link>
                     <Link className="btn btn-sm sm:btn-md bg-amber-600 text-white hover:bg-amber-700 duration-500" to={'/register'}>Register</Link>
                 </div>

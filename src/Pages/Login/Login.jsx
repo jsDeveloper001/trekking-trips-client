@@ -14,7 +14,7 @@ const Login = () => {
                         <div className='flex flex-col gap-3'>
                             <input type="email" className='bg-transparent border-2 p-2 rounded-md focus:outline-blue-400 duration-100' placeholder='enter your email' name='email' required />
                             <input type="password" className='bg-transparent border-2 p-2 rounded-md focus:outline-blue-400 duration-100' placeholder='enter your password' name='password' required />
-                            <button className='btn bg-blue-600 hover:bg-blue-700 text-white font-semibold mt-2'>Login</button>
+                            <button className='btn bg-blue-600 hover:bg-blue-700 duration-500 text-white font-semibold mt-2'>Login</button>
                         </div>
                     </form>
                     {/* social login */}
