@@ -1,6 +1,3 @@
-import { BsInstagram, BsTwitter } from "react-icons/bs";
-import { FaFacebook } from "react-icons/fa";
-
 const Footer = () => {
     return (
         <footer className="mt-14 p-10 bg-base-200 text-base-content rounded">
