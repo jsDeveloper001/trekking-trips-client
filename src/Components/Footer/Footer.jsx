@@ -4,14 +4,14 @@ import { FaFacebook } from "react-icons/fa";
 const Footer = () => {
     return (
         <footer className="mt-14 p-10 bg-base-200 text-base-content rounded">
-            <div className="grid grid-cols-3 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 items-center">
                 <nav>
                     <h2 className="text-5xl mb-4 font-bold">Trekking Trips</h2>
                 </nav>
                 <nav className="grid grid-flow-col gap-4">
                     <div>
                         <h4 className="text-2xl font-bold mb-3">Contact Us</h4>
-                        <p className="text-lg">Email: info@sitename.com</p>
+                        <p className="text-lg">Email: info@trekkingtrips.com</p>
                         <p className="text-lg">Phone: +1 234 567 890</p>
                     </div>
                 </nav>
