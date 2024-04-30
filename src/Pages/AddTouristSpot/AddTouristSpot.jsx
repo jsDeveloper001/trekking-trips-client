@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const AddTouristSpot = () => {
     const { User } = useContext(FirebaseAuth)
+    console.log(User)
     const userEmail = User.email
     const userName = User.displayName
 

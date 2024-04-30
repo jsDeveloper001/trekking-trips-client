@@ -1,12 +1,9 @@
 import axios from "axios";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const SingleTouristSpot = ({ singleOne, index, Refetch }) => {
-    const HandleUpdate = (id) => {
-        console.log(id)
-    }
-
     const HandleDelete = (id) => {
         const a = confirm();
         if (a) {
@@ -25,7 +22,7 @@ const SingleTouristSpot = ({ singleOne, index, Refetch }) => {
             <td>{singleOne.name}</td>
             <td>$ {singleOne.cost}</td>
             <td>{singleOne.country}</td>
-            <td className="text-3xl"> <BiEdit className="hover:cursor-pointer" onClick={() => HandleUpdate(singleOne._id)} /></td>
+            <td className="text-3xl"> <Link to={`/my-list/update/${singleOne._id}`}><BiEdit className="hover:cursor-pointer" /></Link></td>
             <td className="text-3xl"> <MdDelete className="hover:cursor-pointer" onClick={() => HandleDelete(singleOne._id)} /> </td>
         </tr>
     );
