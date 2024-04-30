@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { FirebaseAuth } from '../../Services/AuthProvider';
-import { useQuery } from 'react-query';
 import axios from 'axios';
 
 
