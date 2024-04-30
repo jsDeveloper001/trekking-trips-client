@@ -1,8 +1,13 @@
-# React + Vite
+# Trekking Trips
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site Link: https://trekking-trips.netlify.app/
 
-Currently, two official plugins are available:
+##Features:
+* Login with Google, Github and Email-Password system based Site
+* All created Tourist Spot can view by any Visitors
+* New visitors Cannot show details without Login in the site
+* Users can Read, update and Delete Tourist Spots thats he/she added
+* Responsive Website with Better UX
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Assignment Category: Southeast Asia
