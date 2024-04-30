@@ -2,18 +2,33 @@ import axios from "axios";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SingleTouristSpot = ({ singleOne, index, Refetch }) => {
     const HandleDelete = (id) => {
-        const a = confirm();
-        if (a) {
-            axios.delete(`http://localhost:5000/user-list/${id}`)
-                .then(confirmDelete => {
-                    if (confirmDelete.data.deletedCount > 0) {
-                        Refetch()
-                    }
-                })
-        }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/user-list/${id}`)
+                    .then(confirmDelete => {
+                        if (confirmDelete.data.deletedCount > 0) {
+                            Refetch()
+                        }
+                    })
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Tourist Spot Deleted.",
+                    icon: "success"
+                });
+            }
+        });
     }
 
     return (

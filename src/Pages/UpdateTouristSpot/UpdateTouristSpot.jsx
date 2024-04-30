@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateTouristSpot = () => {
     const touristSpot = useLoaderData();
-    console.log(touristSpot)
     const HandleUpdate = (e) => {
         e.preventDefault()
         const name = e.target.name.value
@@ -20,11 +20,18 @@ const UpdateTouristSpot = () => {
         axios.put(`http://localhost:5000/my-list/update/${touristSpot._id}`, SpotInfo)
             .then(confirm => {
                 if (confirm.data.modifiedCount) {
-                    alert("Updated")
+                    Swal.fire({
+                        title: "Updated!",
+                        text: "Information has been Updated.",
+                        icon: "success"
+                    });
                 }
-
                 else {
-                    alert("Alreay Up to Date")
+                    Swal.fire({
+                        title: "Already Updated!",
+                        text: "Your are already Updated.",
+                        icon: "warning"
+                    })
                 }
             })
     }

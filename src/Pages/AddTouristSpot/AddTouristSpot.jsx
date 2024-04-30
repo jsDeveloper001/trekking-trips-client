@@ -1,15 +1,12 @@
 import { useContext } from 'react';
 import { FirebaseAuth } from '../../Services/AuthProvider';
 import axios from 'axios';
-
+import Swal from 'sweetalert2';
 
 const AddTouristSpot = () => {
     const { User } = useContext(FirebaseAuth)
-    console.log(User)
     const userEmail = User.email
     const userName = User.displayName
-
-    // console.log(data)
 
     const AddNewTouristSpot = (e) => {
         e.preventDefault()
@@ -23,17 +20,17 @@ const AddTouristSpot = () => {
         const image = e.target.image.value
         const details = e.target.details.value
 
-
         const SpotInfo = { name, time, country, seasonality, visitors, location, cost, image, details, userEmail, userName }
-
         axios.post("http://localhost:5000/add-tourist-spot", SpotInfo)
             .then(confirm => {
                 if (confirm.data.insertedId) {
-                    alert("added")
+                    Swal.fire({
+                        title: "Created!",
+                        text: "New Tourist Spot has been Created.",
+                        icon: "success"
+                    })
                 }
             })
-
-
     }
     return (
         <div className='mt-2'>
