@@ -22,9 +22,9 @@ const AllTouristsSpot = () => {
                     :
                     touristsSpot.length > 0 ?
                         <div>
-                            <div className="mx-auto w-3/12 mb-6">
+                            {/* <div className="mx-auto w-3/12 mb-6">
                                 <button className="btn flex w-full bg-blue-600 hover:bg-blue-700 text-white">Short By Avarage</button>
-                            </div>
+                            </div> */}
                             <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                                 {
                                     touristsSpot.map(touristSpot => <TouristSpot touristSpot={touristSpot} key={touristSpot._id}></TouristSpot>)

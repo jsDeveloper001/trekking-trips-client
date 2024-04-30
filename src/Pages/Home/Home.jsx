@@ -27,8 +27,10 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
-            <AllTouristsSpot />
+            <div className="mt-10">
+                <h2 className="text-center text-4xl font-bold mb-5">Tourist Spot</h2>
+                <AllTouristsSpot />
+            </div>
 
         </div>
     );
