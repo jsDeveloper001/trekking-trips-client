@@ -16,7 +16,7 @@ const SingleTouristSpot = ({ singleOne, index, Refetch }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/user-list/${id}`)
+                axios.delete(`https://trekking-trips.vercel.app/user-list/${id}`)
                     .then(confirmDelete => {
                         if (confirmDelete.data.deletedCount > 0) {
                             Refetch()

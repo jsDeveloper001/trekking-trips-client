@@ -21,7 +21,7 @@ const AddTouristSpot = () => {
         const details = e.target.details.value
 
         const SpotInfo = { name, time, country, seasonality, visitors, location, cost, image, details, userEmail, userName }
-        axios.post("http://localhost:5000/add-tourist-spot", SpotInfo)
+        axios.post("https://trekking-trips.vercel.app/add-tourist-spot", SpotInfo)
             .then(confirm => {
                 if (confirm.data.insertedId) {
                     Swal.fire({

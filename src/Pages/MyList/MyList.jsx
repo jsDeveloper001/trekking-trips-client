@@ -10,7 +10,7 @@ const MyList = () => {
     const [touristsSpot, settouristsSpot] = useState([]);
     const [Fetch, setRefetch] = useState(true)
     useEffect(() => {
-        axios.get(`http://localhost:5000/user-list/${User.email}`)
+        axios.get(`https://trekking-trips.vercel.app/user-list/${User.email}`)
             .then(data => {
                 settouristsSpot(data.data)
             })

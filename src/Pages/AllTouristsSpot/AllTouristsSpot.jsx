@@ -1,14 +1,14 @@
-import TouristSpot from "../../Components/TouristSpot/TouristSpot";
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import TouristSpot from "../../Components/TouristSpot/TouristSpot";
 
 const AllTouristsSpot = () => {
     const [touristsSpot, settouristsSpot] = useState([])
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         setLoading(true)
-        axios.get("http://localhost:5000/all-tourist-spot")
+        axios.get("https://trekking-trips.vercel.app/all-tourist-spot")
             .then(data => {
                 settouristsSpot(data.data)
                 setLoading(false)

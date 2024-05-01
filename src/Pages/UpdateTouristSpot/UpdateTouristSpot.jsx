@@ -17,7 +17,7 @@ const UpdateTouristSpot = () => {
         const details = e.target.details.value
 
         const SpotInfo = { name, time, country, seasonality, visitors, location, cost, image, details }
-        axios.put(`http://localhost:5000/my-list/update/${touristSpot._id}`, SpotInfo)
+        axios.put(`https://trekking-trips.vercel.app/my-list/update/${touristSpot._id}`, SpotInfo)
             .then(confirm => {
                 if (confirm.data.modifiedCount) {
                     Swal.fire({
