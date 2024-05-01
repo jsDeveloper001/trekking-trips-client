@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import SingleTouristSpot from "../../Components/SingleTouristSpot/SingleTouristSpot";
 import { Link } from "react-router-dom";
+import SingleTouristSpot from "../../Components/SingleTouristSpot/SingleTouristSpot";
 import { FirebaseAuth } from "../../Services/AuthProvider";
 
 const MyList = () => {
     const { User } = useContext(FirebaseAuth)
+    console.log(User.email)
     const [touristsSpot, settouristsSpot] = useState([]);
     const [Fetch, setRefetch] = useState(true)
     useEffect(() => {

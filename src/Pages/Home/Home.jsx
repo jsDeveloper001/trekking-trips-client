@@ -1,3 +1,4 @@
+import TouristCountries from "../../Components/TouristCountries/TouristCountries";
 import AllTouristsSpot from "../AllTouristsSpot/AllTouristsSpot";
 
 const Home = () => {
@@ -31,7 +32,10 @@ const Home = () => {
                 <h2 className="text-center text-4xl font-bold mb-5">Tourist Spot</h2>
                 <AllTouristsSpot />
             </div>
-
+            <div className="mt-16">
+                <h2 className="text-center text-4xl font-bold mb-5">Tourist Countries</h2>
+                <TouristCountries />
+            </div>
         </div>
     );
 };

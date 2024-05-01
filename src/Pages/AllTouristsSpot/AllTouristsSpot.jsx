@@ -7,11 +7,12 @@ const AllTouristsSpot = () => {
     const [touristsSpot, settouristsSpot] = useState([])
     const [loading, setLoading] = useState(true);
     useEffect(() => {
+        setLoading(true)
         axios.get("http://localhost:5000/all-tourist-spot")
             .then(data => {
                 settouristsSpot(data.data)
+                setLoading(false)
             })
-        setLoading(false)
     }, [])
 
     return (
@@ -25,7 +26,7 @@ const AllTouristsSpot = () => {
                             {/* <div className="mx-auto w-3/12 mb-6">
                                 <button className="btn flex w-full bg-blue-600 hover:bg-blue-700 text-white">Short By Avarage</button>
                             </div> */}
-                            <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                            <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                                 {
                                     touristsSpot.map(touristSpot => <TouristSpot touristSpot={touristSpot} key={touristSpot._id}></TouristSpot>)
                                 }

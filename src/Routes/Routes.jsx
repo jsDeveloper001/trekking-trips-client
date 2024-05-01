@@ -10,6 +10,7 @@ import AddTouristSpot from "../Pages/AddTouristSpot/AddTouristSpot";
 import AllTouristsSpot from "../Pages/AllTouristsSpot/AllTouristsSpot";
 import TouristSpotDetails from "../Pages/TouristSpotDetails/TouristSpotDetails";
 import UpdateTouristSpot from "../Pages/UpdateTouristSpot/UpdateTouristSpot";
+import CountrySpots from "../Pages/CountrySpots/CountrySpots";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home />
+                element: <Home />,
+                loader: () => fetch("http://localhost:5000/country")
             },
             {
                 path: "/login",
@@ -50,7 +52,13 @@ const router = createBrowserRouter([
                 path: "/tourist-spot/:id",
                 element: <PrivateRoute><TouristSpotDetails /></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/tourist-spot/${params.id}`)
-            }
+            },
+            {
+                path: "/tourist-spot/country/:countryName",
+                element: <CountrySpots />,
+                loader: ({ params }) => fetch(`http://localhost:5000/tourist-spot/country/${params.countryName}`)
+            },
+
         ]
     }
 ])

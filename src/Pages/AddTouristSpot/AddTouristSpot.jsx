@@ -1,7 +1,7 @@
-import { useContext } from 'react';
-import { FirebaseAuth } from '../../Services/AuthProvider';
 import axios from 'axios';
+import { useContext } from 'react';
 import Swal from 'sweetalert2';
+import { FirebaseAuth } from '../../Services/AuthProvider';
 
 const AddTouristSpot = () => {
     const { User } = useContext(FirebaseAuth)
